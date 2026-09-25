@@ -19,6 +19,6 @@ docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /opt/hawser-stacks:/opt/hawser-stacks \
   -e STACKS_DIR=/opt/hawser-stacks \
-  -e TOKEN=your-secret-token \
+  -e TOKEN=abc123 \
   -p 2376:2376 \
   ghcr.io/finsys/hawser:latest
