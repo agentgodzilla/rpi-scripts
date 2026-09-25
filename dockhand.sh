@@ -16,6 +16,8 @@ docker rm -f hawser || true
 # create portainer agent container
 docker run -d \
   --name hawser \
+  --restart=always \
+  --pull=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /opt/hawser-stacks:/opt/hawser-stacks \
   -e STACKS_DIR=/opt/hawser-stacks \
