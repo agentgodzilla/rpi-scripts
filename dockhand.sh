@@ -11,15 +11,14 @@ mkdir /app/adgurad -p
 chown $(who am i | awk '{print $1}') /app
 
 # remove existing container if it exists
-docker rm -f portainer_agent || true
+docker rm -f hawser || true
 
 # create portainer agent container
 docker run -d \
-  -p 9001:9001 \
-  --name portainer_agent \
-  --restart=always \
-  --pull=always \
+  --name hawser \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-  -v /:/host \
-  portainer/agent:sts
+  -v /opt/hawser-stacks:/opt/hawser-stacks \
+  -e STACKS_DIR=/opt/hawser-stacks \
+  -e TOKEN=your-secret-token \
+  -p 2376:2376 \
+  ghcr.io/finsys/hawser:latest
